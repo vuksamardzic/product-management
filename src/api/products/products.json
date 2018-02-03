@@ -1,0 +1,32 @@
+[
+    {
+      "id": 2,
+      "name": "hammer",
+      "code": "GDN-0023",
+      "description": "simple hammer",
+      "available": 13,
+      "price": 32.99,
+      "rating": 4.6,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0822/7753/products/217-40_9724be34-e15b-41de-bae7-6a68861bf13c_large.png?v=1430830279"
+    },
+    {
+      "id": 3,
+      "name": "time",
+      "code": "SIX-0023",
+      "description": "simple hammer",
+      "available": 5,
+      "price": 50,
+      "rating": 3.8,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0822/7753/products/217-40_9724be34-e15b-41de-bae7-6a68861bf13c_large.png?v=1430830279"
+    },
+    {
+        "id": 4,
+        "name": "mega hammer",
+        "code": "BTP-0023",
+        "description": "simple hammer",
+        "available": 22,
+        "price": 5.23,
+        "rating": 3.8,
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0822/7753/products/217-40_9724be34-e15b-41de-bae7-6a68861bf13c_large.png?v=1430830279"
+      }
+  ]
