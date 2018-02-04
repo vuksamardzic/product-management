@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { ProductService } from './shared/services/product.service';
 
 @Component({
   selector: 'pm-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [ProductService]
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'pm';
-}
+export class AppComponent { }
