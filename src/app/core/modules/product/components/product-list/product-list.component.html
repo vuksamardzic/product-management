@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    {{ pageTitle }}
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Filter by: </label>
+          <input [(ngModel)]="filterValue" type="text" class="form-control col-6">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Filtered by: {{ filterValue }}</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table" *ngIf="products && products.length">
+      <thead>
+        <tr>
+          <th>
+            <button class="btn btn-primary" (click)="toggleImage()">{{ showImage ? 'Hide' : 'Show' }} image</button>
+          </th>
+          <th>Product</th>
+          <th>Code</th>
+          <th>Available</th>
+          <th>Price</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of filteredProducts">
+          <td>
+            <img *ngIf="showImage" [src]="product.imageUrl" [title]="product.name" class="img-responsive">
+          </td>
+          <td>
+            <a [routerLink]="['/products', product.id]">{{ product.name }}</a>
+          </td>
+          <td>{{ product.code | lowercase | convertToSpace: '-'}}</td>
+          <td>{{ product.available }}</td>
+          <td>{{ product.price | currency: 'EUR':'symbol':'1.2-2'}}</td>
+          <td>
+            <pm-star [rating]="product.rating"></pm-star>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
