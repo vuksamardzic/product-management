@@ -35,6 +35,7 @@
     </div>
   </div>
   <div class="card-footer">
-    <button class="btn btn-primary" (click)="onBack()">Back</button>
+    <button class="btn btn-light border-secondary" (click)="onBack()">Back</button>
+    <button class="btn btn-primary" [routerLink]="['/products', product.id, 'edit']">Edit</button>    
   </div>
 </div>
