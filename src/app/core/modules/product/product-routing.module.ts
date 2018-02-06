@@ -9,7 +9,8 @@ import { ProductGuardService } from './services/product-guard.service';
 
 const routes: Routes = [
   { path: 'products', component: ProductListComponent },
-  { path: 'products/:id', canActivate: [ProductGuardService], component: ProductDetailComponent }
+  { path: 'products/:id', canActivate: [ProductGuardService], component: ProductDetailComponent },
+  { path: 'products/:id/edit', component: ProductListComponent }
 ];
 
 @NgModule({
