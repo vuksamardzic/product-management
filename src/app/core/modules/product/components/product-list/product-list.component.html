@@ -10,11 +10,8 @@
           <label class="col-2 col-form-label">Filter by: </label>
           <input [(ngModel)]="filterValue" type="text" class="form-control col-6">
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <h4>Filtered by: {{ filterValue }}</h4>
+
+        <button class="btn btn-primary" [routerLink]="['/products', 0, 'edit']">Add product</button>        
       </div>
     </div>
   </div>
@@ -24,13 +21,14 @@
       <thead>
         <tr>
           <th>
-            <button class="btn btn-primary" (click)="toggleImage()">{{ showImage ? 'Hide' : 'Show' }} image</button>
+            <button class="btn btn-primary" (click)="toggleImage()">{{ showImage ? 'Hide' : 'Show' }} picture</button>
           </th>
           <th>Product</th>
           <th>Code</th>
           <th>Available</th>
           <th>Price</th>
           <th>Rating</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -46,6 +44,9 @@
           <td>{{ product.price | currency: 'EUR':'symbol':'1.2-2'}}</td>
           <td>
             <pm-star [rating]="product.rating"></pm-star>
+          </td>
+          <td>
+            <button class="btn btn-primary" [routerLink]="['/products', product.id, 'edit']">Edit</button>
           </td>
         </tr>
       </tbody>
