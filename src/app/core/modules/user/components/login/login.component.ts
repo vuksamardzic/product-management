@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
       const username = loginForm.form.value.username;
       const password = loginForm.form.value.password;
 
-
       this.router.navigate(['/products']);
     } else {
       this.errorMessage = 'Please enter username and password!'
