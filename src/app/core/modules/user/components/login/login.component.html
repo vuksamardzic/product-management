@@ -1,5 +1,16 @@
-<form novalidate (ngSubmit)="login(loginForm)" #loginForm="ngForm">
-  <input type="text" placeholder="username" name="username" ngModel>
-  <input type="password" placeholder="password" name="password" ngModel>
-  <input type="submit" value="Log in">
-</form>
+<div class="container login-wrapper">
+  <div class="row">
+    <div class="col-12">
+      <h4>Login form</h4>
+      <form novalidate (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="username" name="username" ngModel>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="password" name="password" ngModel>
+        </div>
+        <button type="submit" class="btn btn-primary">Log in</button>
+      </form>
+    </div>
+  </div>
+</div>
