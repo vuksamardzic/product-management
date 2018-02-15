@@ -12,34 +12,18 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductListComponent implements OnInit {
   pageTitle: string = 'Product list';
   showImage: boolean = false;
-  products: IProduct[];
-  filteredProducts: IProduct[] = [];
+  products: IProduct[] = [];
   errorMessage: string;
-
-  _filterValue: string;
-
-  get filterValue(): string {
-    return this._filterValue;
-  }
-
-  set filterValue(value: string) {
-    this._filterValue = value;
-    this.filteredProducts = this.filterValue ? this.performFilter(this.filterValue) : this.products;
-  }
+  filterValue: string;
 
   constructor(private _productService: ProductService, private route: ActivatedRoute) { }
-
-  performFilter(filterBy: string): IProduct[] {
-    filterBy = filterBy.toLocaleLowerCase();
-    return this.products.filter((product: IProduct) => product.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
-  }
 
   toggleImage(): void {
     this.showImage = !this.showImage;
   }
 
   ngOnInit() {
-    this._filterValue = this.route.snapshot.queryParams['filterBy'] || '';
+    this.filterValue = this.route.snapshot.queryParams['filterBy'] || '';
     this.showImage = this.route.snapshot.queryParamMap.get('showImage') === 'true';
     // variation in syntax : queryParams || queryParamMap and params || paramMap
     // optional param -> this.route.snapshot.paramMap.get('name');
@@ -49,7 +33,6 @@ export class ProductListComponent implements OnInit {
       .subscribe(
         products => {
           this.products = products;
-          this.filteredProducts = this.products;
         },
         error => this.errorMessage = <any>error);
   }
