@@ -8,6 +8,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class ProductService {
@@ -23,6 +24,9 @@ export class ProductService {
   }
 
   getProduct(id: number): Observable<IProduct> {
+    if ( id === 0 ) {
+      return Observable.of(this.initProduct());
+    }
     return this.getProducts()
     .map((products: IProduct[]) => products.find(p => p.id === id));
   }
@@ -31,4 +35,19 @@ export class ProductService {
     console.log(err.message);
     return Observable.throw(err.message);
   }
+
+  initProduct(): IProduct {
+    // return initialized object
+    return {
+      id: 0,
+      name: null,
+      code: null,
+      description: null,
+      available: null,
+      price: null,
+      rating: null,
+      imageUrl: null
+    }
+  }
+
 }

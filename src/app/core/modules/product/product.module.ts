@@ -8,6 +8,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { ConvertToSpacePipe } from './pipes/convert-to-space.pipe';
 import { ProductService } from './services/product.service';
 import { ProductGuardService } from './services/product-guard.service';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { ProductGuardService } from './services/product-guard.service';
   declarations: [
     ProductListComponent,
     ProductDetailComponent,
-    ConvertToSpacePipe
+    ConvertToSpacePipe,
+    ProductEditComponent
   ],
   providers: [
     ProductService,
