@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 
 import { IProduct } from '../../interfaces/product.interface';
 import { ProductService } from '../../services/product.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'pm-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit{
+export class ProductListComponent implements OnInit {
   pageTitle: string = 'Product list';
   showImage: boolean = false;
   products: IProduct[];
@@ -26,7 +27,7 @@ export class ProductListComponent implements OnInit{
     this.filteredProducts = this.filterValue ? this.performFilter(this.filterValue) : this.products;
   }
 
-  constructor(private _productService: ProductService) {}
+  constructor(private _productService: ProductService, private route: ActivatedRoute) { }
 
   performFilter(filterBy: string): IProduct[] {
     filterBy = filterBy.toLocaleLowerCase();
@@ -38,12 +39,18 @@ export class ProductListComponent implements OnInit{
   }
 
   ngOnInit() {
+    this._filterValue = this.route.snapshot.queryParams['filterBy'] || '';
+    this.showImage = this.route.snapshot.queryParamMap.get('showImage') === 'true';
+    // variation in syntax : queryParams || queryParamMap and params || paramMap
+    // optional param -> this.route.snapshot.paramMap.get('name');
+    // optional param -> this.route.snapshot.params['name'];
+
     this._productService.getProducts()
-    .subscribe(
-      products => {
-        this.products = products;
-        this.filteredProducts = this.products;
-      },
-      error => this.errorMessage = <any>error);
+      .subscribe(
+        products => {
+          this.products = products;
+          this.filteredProducts = this.products;
+        },
+        error => this.errorMessage = <any>error);
   }
 }

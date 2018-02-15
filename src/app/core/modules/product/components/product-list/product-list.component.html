@@ -37,7 +37,8 @@
             <img *ngIf="showImage" [src]="product.imageUrl" [title]="product.name" class="img-responsive">
           </td>
           <td>
-            <a [routerLink]="['/products', product.id]">{{ product.name }}</a>
+            <a [routerLink]="['/products', product.id]"
+                [queryParams]="{filterBy: filterValue, showImage: showImage}">{{ product.name }}</a>
           </td>
           <td>{{ product.code | lowercase | convertToSpace: '-'}}</td>
           <td>{{ product.available }}</td>
