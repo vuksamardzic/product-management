@@ -5,13 +5,14 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductGuardService } from './services/product-guard.service';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
+import { ProductResolverService } from './services/product-resolver.service';
 
 
 
 const routes: Routes = [
   { path: 'products', component: ProductListComponent },
-  { path: 'products/:id', canActivate: [ProductGuardService], component: ProductDetailComponent },
-  { path: 'products/:id/edit', component: ProductEditComponent }
+  { path: 'products/:id', canActivate: [ProductGuardService], component: ProductDetailComponent, resolve: { product: ProductResolverService} },
+  { path: 'products/:id/edit', component: ProductEditComponent, resolve: { product: ProductResolverService} }
 ];
 
 @NgModule({

@@ -12,22 +12,14 @@ export class ProductDetailComponent implements OnInit {
   pageTitle: string = 'Product';
   product: IProduct;
   errorMessage: string;
-  constructor(private _route: ActivatedRoute,
-    private _router: Router,
-    private _productService: ProductService) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    const param = this._route.snapshot.paramMap.get('id');
-    if ( param ) {
-      this._productService.getProduct(+param).subscribe(
-        product => this.product = product,
-        error => this.errorMessage = <any>error);
-    }
-
+    this.product = this.route.snapshot.data['product'];
   }
 
   onBack(): void {
-    this._router.navigate(['/products'], { queryParamsHandling: 'preserve' });
+    this.router.navigate(['/products'], { queryParamsHandling: 'preserve' });
   }
 
 }

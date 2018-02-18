@@ -10,6 +10,7 @@ import { ProductService } from './services/product.service';
 import { ProductGuardService } from './services/product-guard.service';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { ProductFilterPipe } from './pipes/product-filter.pipe';
+import { ProductResolverService } from './services/product-resolver.service';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { ProductFilterPipe } from './pipes/product-filter.pipe';
   ],
   providers: [
     ProductService,
-    ProductGuardService
+    ProductGuardService,
+    ProductResolverService
   ]
 })
 export class ProductModule { }
