@@ -11,6 +11,7 @@ import { ProductGuardService } from './services/product-guard.service';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { ProductFilterPipe } from './pipes/product-filter.pipe';
 import { ProductResolverService } from './services/product-resolver.service';
+import { ProductEditInfoComponent } from './components/product-edit-info/product-edit-info.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { ProductResolverService } from './services/product-resolver.service';
     ProductDetailComponent,
     ConvertToSpacePipe,
     ProductEditComponent,
-    ProductFilterPipe
+    ProductFilterPipe,
+    ProductEditInfoComponent
   ],
   providers: [
     ProductService,
