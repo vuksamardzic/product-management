@@ -1,3 +1,9 @@
-<p>
-  product-edit-price works!
-</p>
+<form novalidate>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input id="price" type="number" class="form-control" name="price" [(ngModel)]="product.price">
+  </div>
+  <button type="submit" class="btn btn-primary" *ngIf="product.id != 0">Edit</button>
+  <button type="button" class="btn btn-light" *ngIf="product.id == 0">Add</button>
+  <button class="btn btn-light" [routerLink]="['/products', { optional_param: true }]">Cancel</button>
+</form>
