@@ -28,6 +28,6 @@ export class AppComponent {
   }
 
   logOut(): void {
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('/home');
   }
 }
