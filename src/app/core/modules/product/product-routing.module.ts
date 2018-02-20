@@ -10,27 +10,40 @@ import { ProductEditInfoComponent } from './components/product-edit-info/product
 import { ProductEditPriceComponent } from './components/product-edit-price/product-edit-price.component';
 
 const routes: Routes = [
-  { path: 'products', component: ProductListComponent },
-  { path: 'products/:id', canActivate: [ProductGuardService], component: ProductDetailComponent, resolve: { product: ProductResolverService } },
   {
-    path: 'products/:id/edit',
-    component: ProductEditComponent,
-    resolve: {
-      product: ProductResolverService
-    },
+    path: 'products',
     children: [
       {
         path: '',
-        pathMatch: 'full',
-        redirectTo: 'info'
+        component: ProductListComponent,
       },
       {
-        path: 'info',
-        component: ProductEditInfoComponent
+        path: ':id',
+        canActivate: [ProductGuardService],
+        component: ProductDetailComponent,
+        resolve: { product: ProductResolverService }
       },
       {
-        path: 'price',
-        component: ProductEditPriceComponent
+        path: ':id/edit',
+        component: ProductEditComponent,
+        resolve: {
+          product: ProductResolverService
+        },
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'info'
+          },
+          {
+            path: 'info',
+            component: ProductEditInfoComponent
+          },
+          {
+            path: 'price',
+            component: ProductEditPriceComponent
+          }
+        ]
       }
     ]
   }
