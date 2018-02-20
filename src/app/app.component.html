@@ -10,20 +10,19 @@
 
         <div class="collapse navbar-collapse" id="main_nav">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
               <a class="nav-link" [routerLink]="['']">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" routerLinkActive="active">
               <a class="nav-link" [routerLink]="['/products']">Products</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['']">Show messages</a>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/messages']">Show messages</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" routerLinkActive="active">
               <a class="nav-link" [routerLink]="['/login']">Log in</a>
-              <!-- <a class="nav-link" (click)="logOut()">Log out</a> -->
             </li>
           </ul>
         </div>
