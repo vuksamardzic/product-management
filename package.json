@@ -6,6 +6,7 @@
     "ng": "ng",
     "start": "ng serve -o",
     "build": "ng build --prod",
+    "deploy": "ng build --prod && surge -p ./dist -d management.surge.sh",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
