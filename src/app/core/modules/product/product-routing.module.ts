@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
@@ -21,7 +21,9 @@ const routes: Routes = [
         path: ':id',
         canActivate: [ProductGuardService],
         component: ProductDetailComponent,
-        resolve: { product: ProductResolverService }
+        resolve: {
+          product: ProductResolverService
+        }
       },
       {
         path: ':id/edit',
@@ -54,4 +56,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class ProductRoutingModule { }
+export class ProductRoutingModule {
+}
