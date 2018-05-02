@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { HttpErrorResponse } from '@angular/common/http';
 import { IProduct } from '../interfaces/product.interface';
 
 import 'rxjs/add/observable/throw';
@@ -14,30 +13,10 @@ import 'rxjs/add/observable/of';
 export class ProductService {
 
   private _productUrl = './api/products/products.json';
-  
-  constructor( private _http: HttpClient ) { }
 
-  getProducts(): Observable<IProduct[]> {
-    return this._http.get<IProduct[]>(this._productUrl)
-    .do(data => console.log())
-    .catch(this.handleError);
-  }
+  constructor(private http: HttpClient) { }
 
-  getProduct(id: number): Observable<IProduct> {
-    if ( id === 0 ) {
-      return Observable.of(this.initProduct());
-    }
-    return this.getProducts()
-    .map((products: IProduct[]) => products.find(p => p.id === id));
-  }
-
-  private handleError(err: HttpErrorResponse) {
-    console.log(err.message);
-    return Observable.throw(err.message);
-  }
-
-  initProduct(): IProduct {
-    // return initialized object
+  static initProduct(): IProduct {
     return {
       id: 0,
       name: null,
@@ -47,7 +26,25 @@ export class ProductService {
       price: null,
       rating: null,
       imageUrl: null
+    };
+  }
+
+  private static handleError(err: HttpErrorResponse) {
+    console.error(err.message);
+    return Observable.throw(err.message);
+  }
+
+  getProducts(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(this._productUrl)
+      .catch(ProductService.handleError);
+  }
+
+  getProduct(id: number): Observable<IProduct> {
+    if (id === 0) {
+      return Observable.of(ProductService.initProduct());
     }
+    return this.getProducts()
+      .map((products: IProduct[]) => products.find(p => p.id === id));
   }
 
 }
