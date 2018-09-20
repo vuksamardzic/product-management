@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../../services/product.service';
 import { IProduct } from '../../interfaces/product.interface';
 
 @Component({
@@ -10,9 +9,9 @@ import { IProduct } from '../../interfaces/product.interface';
 })
 export class ProductEditComponent implements OnInit {
   product: IProduct;
-  errorMessage: string;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) { }
+  constructor(private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.route.data.subscribe(data => {

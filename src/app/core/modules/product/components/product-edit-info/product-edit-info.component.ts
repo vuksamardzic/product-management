@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./product-edit-info.component.scss']
 })
 export class ProductEditInfoComponent implements OnInit {
-  @ViewChild(NgForm) productForm: NgForm; 
+  @ViewChild(NgForm) productForm: NgForm;
   product: IProduct;
 
   constructor(private route: ActivatedRoute) { }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, Event, NavigationStart, NavigationError, NavigationCancel, NavigationEnd } from '@angular/router';
+import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'pm-root',
@@ -7,7 +7,7 @@ import { Router, Event, NavigationStart, NavigationError, NavigationCancel, Navi
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  loading: boolean = true;
+  loading = true;
 
   constructor(private router: Router) {
     this.router.events.subscribe((routerEvent: Event) => {
@@ -25,9 +25,5 @@ export class AppComponent {
     ) {
       this.loading = false;
     }
-  }
-
-  logOut(): void {
-    this.router.navigateByUrl('/home');
   }
 }

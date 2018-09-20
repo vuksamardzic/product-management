@@ -8,10 +8,10 @@
       <div class="col-12">
         <div class="form-group row">
           <label class="col-2 col-form-label">Filter by: </label>
-          <input [(ngModel)]="filterValue" type="text" class="form-control col-6">
+          <input [(ngModel)]="filterValue" type="text" class="form-control col-6" title="filter-value">
         </div>
 
-        <button class="btn btn-primary" [routerLink]="['/products', 0, 'edit']">Add product</button>        
+        <button class="btn btn-primary" [routerLink]="['/products', 0, 'edit']">Add product</button>
       </div>
     </div>
   </div>
@@ -19,37 +19,37 @@
   <div class="table-responsive">
     <table class="table" *ngIf="products && products.length">
       <thead>
-        <tr>
-          <th>
-            <button class="btn btn-primary" (click)="toggleImage()">{{ showImage ? 'Hide' : 'Show' }} picture</button>
-          </th>
-          <th>Product</th>
-          <th>Code</th>
-          <th>Available</th>
-          <th>Price</th>
-          <th>Rating</th>
-          <th>Action</th>
-        </tr>
+      <tr>
+        <th>
+          <button class="btn btn-primary" (click)="toggleImage()">{{ showImage ? 'Hide' : 'Show' }} picture</button>
+        </th>
+        <th>Product</th>
+        <th>Code</th>
+        <th>Available</th>
+        <th>Price</th>
+        <th>Rating</th>
+        <th>Action</th>
+      </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of products | productFilter:filterValue">
-          <td>
-            <img *ngIf="showImage" [src]="product.imageUrl" [title]="product.name" class="img-responsive">
-          </td>
-          <td>
-            <a [routerLink]="['/products', product.id]"
-                [queryParams]="{filterBy: filterValue, showImage: showImage}">{{ product.name }}</a>
-          </td>
-          <td>{{ product.code | lowercase | convertToSpace: '-'}}</td>
-          <td>{{ product.available }}</td>
-          <td>{{ product.price | currency: 'EUR':'symbol':'1.2-2'}}</td>
-          <td>
-            <pm-star [rating]="product.rating"></pm-star>
-          </td>
-          <td>
-            <button class="btn btn-primary" [routerLink]="['/products', product.id, 'edit']">Edit</button>
-          </td>
-        </tr>
+      <tr *ngFor="let product of products | productFilter:filterValue">
+        <td>
+          <img *ngIf="showImage" [src]="product.imageUrl" [title]="product.name" class="img-responsive">
+        </td>
+        <td>
+          <a [routerLink]="['/products', product.id]"
+             [queryParams]="{filterBy: filterValue, showImage: showImage}">{{ product.name }}</a>
+        </td>
+        <td>{{ product.code | lowercase | convertToSpace: '-'}}</td>
+        <td>{{ product.available }}</td>
+        <td>{{ product.price | currency: 'EUR':'symbol':'1.2-2'}}</td>
+        <td>
+          <pm-star [rating]="product.rating"></pm-star>
+        </td>
+        <td>
+          <button class="btn btn-primary" [routerLink]="['/products', product.id, 'edit']">Edit</button>
+        </td>
+      </tr>
       </tbody>
     </table>
   </div>
